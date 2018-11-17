@@ -55,6 +55,9 @@ function adjustItemsIndexes() {
 	$("input.itemId").each(function(index, element) {
 		element.setAttribute("name", "items[" + (index) + "].id");
 	});
+	$(".itemCheckbox").each(function(index, element) {
+		element.setAttribute("name", "items[" + (index) + "].marked");
+	});
 }
 
 function onAddItemClicked() {

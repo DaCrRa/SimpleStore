@@ -14,6 +14,8 @@ public class Item {
 	@NotNull
 	private String name;
 
+	private boolean marked;
+
 	public String getName() {
 		return name;
 	}
@@ -30,7 +32,15 @@ public class Item {
 		this.id = id;
 	}
 
+	public boolean isMarked() {
+		return marked;
+	}
+
+	public void setMarked(boolean marked) {
+		this.marked = marked;
+	}
+
 	public String toString() {
-		return "item " + id + ": " + name;
+		return "item " + id + ": " + name + " -- " + (marked ? "MARKED!" : "not marked");
 	}
 }
