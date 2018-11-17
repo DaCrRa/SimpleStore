@@ -30,7 +30,8 @@
 					<div class="row">
 						{{#shipment.items}}
 						<div class="col-md-3">
-							<div class="card-counter light">
+							<div
+								class="card-counter {{^marked}}light{{/marked}} {{#marked}}danger{{/marked}}">
 								<i class="fa fa-box-open"></i> <span class="count-numbers">{{name}}</span>
 							</div>
 						</div>
