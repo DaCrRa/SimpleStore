@@ -1,6 +1,6 @@
 <html>
 <body>
-	<script src="add_item.js"></script>
+	<script src="new_shipment_form_functions.js"></script>
 	<h1>New shipment</h1>
 	<form action="/shipment" method="post" name="shipment">
 		<div>
@@ -10,6 +10,7 @@
 			<div>
 				<span class="itemFieldText">Item 1:</span>
 				<input class="itemFieldInput" type="text" name="items[0].name" />
+				<button class="removeItemField" type="button" onclick="onRemoveItemClicked(0)">Remove</button>
 			</div>
 		</div>
 		<button type="button" onclick="onAddItemClicked()">Add item</button>
