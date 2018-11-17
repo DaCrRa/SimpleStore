@@ -16,6 +16,7 @@ function onAddItemClicked() {
     newItemField.getElementsByClassName("itemFieldInput")[0].value = "";
     newItemField.getElementsByClassName("removeItemField")[0].setAttribute("onclick", "onRemoveItemClicked(" + newItemIndex +")"); 
     itemFields.appendChild(newItemField);
+    $("button.removeItemField").removeAttr("disabled");
 }
 
 function onRemoveItemClicked(itemIndex) {
@@ -27,4 +28,7 @@ function onRemoveItemClicked(itemIndex) {
         itemFields[i].getElementsByClassName("removeItemField")[0].setAttribute("onclick", "onRemoveItemClicked(" + (i - 1) +")");
     }
     itemFieldsContainer.removeChild(itemFields[itemIndex]);
+    if (itemFields.length == 1) {
+        $("button.removeItemField").attr("disabled", "true");
+    }
 }
