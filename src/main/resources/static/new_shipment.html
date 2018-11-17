@@ -1,13 +1,18 @@
 <html>
 <body>
+	<script src="add_item.js"></script>
 	<h1>New shipment</h1>
 	<form action="/shipment" method="post" name="shipment">
 		<div>
 			<span>Name:</span><input type="text" name="name" />
 		</div>
-		<div>
-			<span>One item:</span><input type="text" name="items[0].name" />
+		<div id="itemFields">
+			<div>
+				<span class="itemFieldText">Item 1:</span>
+				<input class="itemFieldInput" type="text" name="items[0].name" />
+			</div>
 		</div>
+		<button type="button" onclick="onAddItemClicked()">Add item</button>
 		<input type="submit" />
 	</form>
 </body>
