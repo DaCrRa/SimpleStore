@@ -1,5 +1,6 @@
 package es.danielcr86.simpleStore;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -43,9 +44,19 @@ public class ShipmentsController {
 
 	@GetMapping("/edit/shipment/{id}")
 	public String showEditShipmentForm(Model model, @PathVariable Long id) {
+		model.addAttribute("shipmentAction", "Edit");
 		Shipment shipmentToShow = shipmentRepository.findById(id).get();
 		model.addAttribute("shipment", shipmentToShow);
-		return "edit_shipment";
+		return "shipment_form";
+	}
+
+	@GetMapping("/new/shipment")
+	public String showNewShipmentForm(Model model) {
+		model.addAttribute("shipmentAction", "Submit new");
+		Shipment shipmentPlaceholder = new Shipment();
+		shipmentPlaceholder.setItems(Arrays.asList(new Item()));
+		model.addAttribute("shipment", shipmentPlaceholder);
+		return "shipment_form";
 	}
 
 	@PostMapping("/shipment")

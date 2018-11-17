@@ -1,19 +1,21 @@
 <html>
 <body>
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="/new_shipment_form_functions.js"></script>
-	<h1>Edit shipment</h1>
+	<script src="/shipment_form_functions.js"></script>
+	<h1>{{shipmentAction}} shipment</h1>
 	<form action="/shipment" method="post" name="shipment">
 		<input type="hidden" name="id" value="{{shipment.id}}" />
 		<div>
-			<span>Name:</span><input type="text" class="required" name="name" oninput="onType()" value="{{shipment.name}}"/>
+			<span>Name:</span><input type="text" class="required" name="name" oninput="onType()" {{#shipment.name}}value="{{shipment.name}}"{{/shipment.name}} />
 		</div>
 		<div id="itemFields">
 			{{#shipment.items}}
 			<div>
 				<span class="itemFieldText">Item {{-index}}:</span>
+				{{#id}}
 				<input class="itemId" type="hidden" value="{{id}}" />
-				<input class="itemFieldInput required" type="text" oninput="onType()" value="{{name}}" />
+				{{/id}}
+				<input class="itemFieldInput required" type="text" oninput="onType()" {{#name}}value="{{name}}"{{/name}} />
 				<button class="removeItemField" type="button" disabled="true">Remove</button>
 			</div>
 			{{/shipment.items}}
