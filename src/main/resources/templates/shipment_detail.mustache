@@ -12,6 +12,7 @@
 	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="/shipment_detail.css">
 <script type="text/javascript" src="/send_delete_shipment.js"></script>
 </head>
 
@@ -24,19 +25,28 @@
 				<p>This shipment does not have items</p>
 				{{/shipment.items}} {{^shipment.items.empty}}
 				<p>Shipment has the following items:</p>
-				<ul>
-					{{#shipment.items}}
-					<li>{{name}}</li> {{/shipment.items}}
-				</ul>
+
+				<div class="container">
+					<div class="row">
+						{{#shipment.items}}
+						<div class="col-md-3">
+							<div class="card-counter light">
+								<i class="fa fa-box-open"></i> <span class="count-numbers">{{name}}</span>
+							</div>
+						</div>
+						{{/shipment.items}}
+					</div>
+				</div>
+
 				{{/shipment.items.empty}}
 				<div>
-				<span data-placement="top" data-toggle="tooltip" title="Shipment list">
-						<a href="/"	class="btn btn-secondary btn-xs" data-title="Shipment list"
+					<span data-placement="top" data-toggle="tooltip"
+						title="Shipment list"> <a href="/"
+						class="btn btn-secondary btn-xs" data-title="Shipment list"
 						data-toggle="modal" data-target="#shipmentList"> <span
 							class="fa fa-list"></span>
 					</a>
-					</span>
-					<span data-placement="top" data-toggle="tooltip" title="Edit">
+					</span> <span data-placement="top" data-toggle="tooltip" title="Edit">
 						<a href="/edit/shipment/{{shipment.id}}"
 						class="btn btn-primary btn-xs" data-title="Edit"
 						data-toggle="modal" data-target="#edit"> <span
