@@ -1,5 +1,7 @@
 package es.danielcr86.simpleStore;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +41,8 @@ public class ShipmentsController {
 
 	@PostMapping("/shipment")
 	public String saveShipment(Model model, @ModelAttribute("shipment") Shipment shipment) {
-		for (Item item : shipment.getItems()) {
-			itemRepository.save(item);
-		}
+		List<Item> savedItems = itemRepository.saveAll(shipment.getItems());
+		shipment.setItems(savedItems);
 		shipment = shipmentRepository.save(shipment);
 		return "shipment_detail";
 	}
