@@ -6,11 +6,13 @@ script.src = "http://code.jquery.com/jquery-3.3.1.min.js";
 head.appendChild(script)
 
 function sendDeleteShipment(id) {
-	$.ajax({
-		type: 'DELETE',
-		url: '/shipment/' + id,
-		success: function(response) {
-			window.location.href = "/";
-		}
-	});
+	if (confirm("Are you sure you want to remove shipment?")) {
+		$.ajax({
+			type: 'DELETE',
+			url: '/shipment/' + id,
+			success: function(response) {
+				window.location.href = "/";
+			}
+		});
+	}
 }
