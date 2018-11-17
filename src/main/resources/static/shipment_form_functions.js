@@ -3,6 +3,9 @@ $( document ).ready(function() {
 	enableOrDisableRemoveButtons();
 	adjustItemsIndexes();
 	addItemCheckboxBehavior();
+	$(".itemCheckbox").each(function() {
+		toggleCrossOut($(this));
+	});
 });
 
 function toggleCrossOut(j_checkbox) {
