@@ -1,0 +1,18 @@
+<html>
+<body>
+	<h1>Showing shipment: {{shipment.name}}</h1>
+	{{^shipment.items}}
+	<p>This shipment does not have items</p>
+	{{/shipment.items}}
+
+	{{^shipment.items.empty}}
+	<p>Shipment has the following items:</p>
+	<ul>
+		{{#shipment.items}}
+		<li>{{name}}</li>
+		{{/shipment.items}}
+	</ul>
+	{{/shipment.items.empty}}
+	<a href="/">Back to shipment list</a>
+</body>
+</html>
