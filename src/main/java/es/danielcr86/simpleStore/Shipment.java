@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Shipment {
@@ -17,6 +18,7 @@ public class Shipment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@NotNull
 	private String name;
 	@OneToMany(cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<Item> items = new ArrayList<Item>();
