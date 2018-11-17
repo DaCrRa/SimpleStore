@@ -1,4 +1,5 @@
 <html>
+<script type="text/javascript" src="/send_delete_shipment.js"></script>
 <body>
 	<h1>Showing shipment: {{shipment.name}}</h1>
 	{{^shipment.items}}
@@ -13,6 +14,9 @@
 		{{/shipment.items}}
 	</ul>
 	{{/shipment.items.empty}}
+	<div>
+		<button type="button" onclick="sendDeleteShipment({{shipment.id}})">Delete</button>
+	</div>
 	<a href="/">Back to shipment list</a>
 </body>
 </html>

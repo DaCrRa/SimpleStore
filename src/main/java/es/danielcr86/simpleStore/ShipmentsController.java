@@ -7,10 +7,12 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ShipmentsController {
@@ -47,4 +49,11 @@ public class ShipmentsController {
 		return "shipment_detail";
 	}
 
+	@DeleteMapping("/shipment/{id}")
+	@ResponseBody
+	public void deleteShipment(@PathVariable Long id) {
+		Shipment toBeDeleted =shipmentRepository.getOne(id);
+		shipmentRepository.delete(toBeDeleted);
+		itemRepository.deleteAll(toBeDeleted.getItems());
+	}
 }
