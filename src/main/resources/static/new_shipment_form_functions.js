@@ -56,6 +56,7 @@ function onRemoveItemClicked(itemIndex) {
     itemFieldsContainer.removeChild(itemFields[itemIndex]);
     adjustItemsIndexes();
     enableOrDisableRemoveButtons();
+    enableOrDisableSubmitButton();
 }
 
 function onType() {
