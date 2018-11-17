@@ -26,13 +26,13 @@
 					<input type="hidden" name="id" value="{{shipment.id}}" />
 
 
-					<div class="row">
+					<div class="row align-items-center">
 						<div class="col-md-3 field-label-responsive">
 							<label>Name</label>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+								<div class="input-group mb-2 mr-sm-2 mb-sm-0 row align-items-center">
 									<div class="input-group-addon" style="width: 2.6rem">
 										<span class="fa fa-boxes"></span>
 									</div>
@@ -47,7 +47,7 @@
 
 					<div id="itemFields">
 						{{#shipment.items}}
-						<div class="row">
+						<div class="row align-items-center">
 
 							<div class="col-md-3 field-label-responsive">
 								<label class="itemFieldText">Item {{-index}}</label>
@@ -58,7 +58,7 @@
 
 							<div class="col-md-6">
 								<div class="form-group">
-									<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+									<div class="input-group mb-2 mr-sm-2 mb-sm-0 row align-items-center">
 										<div class="input-group-addon" style="width: 2.6rem">
 											<i class="fa fa-box-open"></i>
 										</div>
@@ -68,14 +68,14 @@
 											autofocus
                                {{#name}}value="{{name}}"{{/name}}>
 
-										<p data-placement="top" data-toggle="tooltip"
+										<span data-placement="top" data-toggle="tooltip"
 											title="Delete item">
 											<button class="removeItemField btn btn-danger btn-xs"
 												data-title="Delete item" data-toggle="modal"
 												data-target="#deleteItem">
 												<span class="fa fa-trash"></span>
 											</button>
-										</p>
+										</span>
 
 									</div>
 								</div>
