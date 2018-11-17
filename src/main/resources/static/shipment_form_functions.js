@@ -2,7 +2,22 @@ $( document ).ready(function() {
 	enableOrDisableSubmitButton();
 	enableOrDisableRemoveButtons();
 	adjustItemsIndexes();
+	addItemCheckboxBehavior();
 });
+
+function toggleCrossOut(j_checkbox) {
+	if( j_checkbox.is(':checked') ) {
+		j_checkbox.siblings(".itemFieldInput").css("text-decoration", "line-through");
+	} else {
+		j_checkbox.siblings(".itemFieldInput").css("text-decoration", "");
+	}
+}
+
+function addItemCheckboxBehavior() {
+	$(".itemCheckbox").on('change', function() {
+		toggleCrossOut($(this));
+	});
+}
 
 function enableOrDisableRemoveButtons() {
 	var removeButtons = $("button.removeItemField");
@@ -48,6 +63,9 @@ function onAddItemClicked() {
 	var newItemField = lastItemField.cloneNode(true);
 	itemFields.appendChild(newItemField);
 	newItemField.getElementsByClassName("itemFieldInput")[0].value = "";
+	var newCheckBox = newItemField.getElementsByClassName("itemCheckbox")[0];
+	newCheckBox.checked = false;
+	toggleCrossOut($(newCheckBox));
 	adjustItemsIndexes();
 	var itemIdInputToRemove = newItemField.getElementsByClassName("itemId");
 	if (itemIdInputToRemove.length > 0) {
@@ -55,6 +73,7 @@ function onAddItemClicked() {
 	}
 	enableOrDisableRemoveButtons();
 	enableOrDisableSubmitButton();
+	addItemCheckboxBehavior();
 }
 
 function onRemoveItemClicked(itemIndex) {
