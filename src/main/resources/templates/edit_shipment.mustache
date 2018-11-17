@@ -1,0 +1,25 @@
+<html>
+<body>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="/new_shipment_form_functions.js"></script>
+	<h1>Edit shipment</h1>
+	<form action="/shipment" method="post" name="shipment">
+		<input type="hidden" name="id" value="{{shipment.id}}" />
+		<div>
+			<span>Name:</span><input type="text" class="required" name="name" oninput="onType()" value="{{shipment.name}}"/>
+		</div>
+		<div id="itemFields">
+			{{#shipment.items}}
+			<div>
+				<span class="itemFieldText">Item {{-index}}:</span>
+				<input class="itemId" type="hidden" value="{{id}}" />
+				<input class="itemFieldInput required" type="text" oninput="onType()" value="{{name}}" />
+				<button class="removeItemField" type="button" disabled="true">Remove</button>
+			</div>
+			{{/shipment.items}}
+		</div>
+		<button type="button" onclick="onAddItemClicked()">Add item</button>
+		<input id="submitButton" type="submit" disabled="true" />
+	</form>
+</body>
+</html>

@@ -39,6 +39,14 @@ public class Shipment {
 		return name;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String toString() {
 		String teamString = "Shipment " + id + ": " + name + "\n";
 		teamString += "number of items: " + this.getItems().size() + "\n";

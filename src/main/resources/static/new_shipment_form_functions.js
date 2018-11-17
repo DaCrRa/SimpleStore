@@ -37,6 +37,9 @@ function adjustItemsIndexes() {
     $("input.itemFieldInput").each(function(index, element) {
         element.setAttribute("name", "items[" + (index) + "].name");
     });
+    $("input.itemId").each(function(index, element) {
+        element.setAttribute("name", "items[" + (index) + "].id");
+    });
 }
 
 function onAddItemClicked() {
@@ -46,6 +49,10 @@ function onAddItemClicked() {
     itemFields.appendChild(newItemField);
     newItemField.getElementsByClassName("itemFieldInput")[0].value = "";
     adjustItemsIndexes();
+    var itemIdInputToRemove = newItemField.getElementsByClassName("itemId");
+    if (itemIdInputToRemove.length > 0) {
+        newItemField.removeChild(newItemField.getElementsByClassName("itemId")[0]);
+    }
     enableOrDisableRemoveButtons();
     enableOrDisableSubmitButton();
 }

@@ -41,6 +41,13 @@ public class ShipmentsController {
 		return "shipment_detail";
 	}
 
+	@GetMapping("/edit/shipment/{id}")
+	public String showEditShipmentForm(Model model, @PathVariable Long id) {
+		Shipment shipmentToShow = shipmentRepository.findById(id).get();
+		model.addAttribute("shipment", shipmentToShow);
+		return "edit_shipment";
+	}
+
 	@PostMapping("/shipment")
 	public String saveShipment(Model model, @ModelAttribute("shipment") Shipment shipment) {
 		List<Item> savedItems = itemRepository.saveAll(shipment.getItems());

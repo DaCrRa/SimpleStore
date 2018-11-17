@@ -15,6 +15,7 @@
 	</ul>
 	{{/shipment.items.empty}}
 	<div>
+		<a href="/edit/shipment/{{shipment.id}}">Edit shipment</a>
 		<button type="button" onclick="sendDeleteShipment({{shipment.id}})">Delete</button>
 	</div>
 	<a href="/">Back to shipment list</a>
