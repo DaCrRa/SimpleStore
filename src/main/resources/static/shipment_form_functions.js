@@ -28,8 +28,8 @@ function enableOrDisableSubmitButton() {
 }
 
 function adjustItemsIndexes() {
-    $("span.itemFieldText").each(function(index) {
-        $(this).text("Item " + (index + 1) + ":");
+    $(".itemFieldText").each(function(index) {
+        $(this).text("Item " + (index + 1));
     });
     $("button.removeItemField").each(function(index, element) {
         element.setAttribute("onclick", "onRemoveItemClicked(" + (index) +")");
