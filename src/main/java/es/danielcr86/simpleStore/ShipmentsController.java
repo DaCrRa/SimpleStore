@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ShipmentsController {
@@ -29,6 +31,13 @@ public class ShipmentsController {
 	public String showShipment(Model model, @PathVariable Long id) {
 		Shipment shipmentToShow = shipmentRepository.findById(id).get();
 		model.addAttribute("shipment", shipmentToShow);
+		return "shipment_detail";
+	}
+
+	@PostMapping("/shipment")
+	public String saveShipment(Model model, @ModelAttribute Shipment shipment) {
+		Shipment savedShipment = shipmentRepository.save(shipment);
+		model.addAttribute(savedShipment);
 		return "shipment_detail";
 	}
 
