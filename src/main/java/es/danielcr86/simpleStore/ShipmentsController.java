@@ -16,6 +16,9 @@ public class ShipmentsController {
 	@Autowired
 	ShipmentRepository shipmentRepository;
 
+	@Autowired
+	ItemRepository itemRepository;
+
 	@PostConstruct
 	public void init() {
 		// So far empty
@@ -35,9 +38,11 @@ public class ShipmentsController {
 	}
 
 	@PostMapping("/shipment")
-	public String saveShipment(Model model, @ModelAttribute Shipment shipment) {
-		Shipment savedShipment = shipmentRepository.save(shipment);
-		model.addAttribute(savedShipment);
+	public String saveShipment(Model model, @ModelAttribute("shipment") Shipment shipment) {
+		for (Item item : shipment.getItems()) {
+			itemRepository.save(item);
+		}
+		shipment = shipmentRepository.save(shipment);
 		return "shipment_detail";
 	}
 

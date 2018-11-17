@@ -1,9 +1,12 @@
 <html>
 <body>
 	<h1>New shipment</h1>
-	<form action="/shipment" method="post">
+	<form action="/shipment" method="post" name="shipment">
 		<div>
 			<span>Name:</span><input type="text" name="name" />
+		</div>
+		<div>
+			<span>One item:</span><input type="text" name="items[0].name" />
 		</div>
 		<input type="submit" />
 	</form>
