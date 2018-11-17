@@ -5,6 +5,20 @@ script.src = "http://code.jquery.com/jquery-3.3.1.min.js";
 
 head.appendChild(script)
 
+function enableOrDisableSubmitButton() {
+    var submitAllowed = true;
+    $("input.required").each(function(idx, element) {
+        if (element.value.length == 0) {
+            submitAllowed = false;
+        }
+    });
+    if (submitAllowed) {
+        $("#submitButton").removeAttr("disabled");
+    } else {
+        $("#submitButton").attr("disabled", "true");
+    }
+}
+
 function onAddItemClicked() {
     var itemFields = document.getElementById("itemFields");
     var lastItemField = itemFields.lastElementChild;
@@ -17,6 +31,7 @@ function onAddItemClicked() {
     newItemField.getElementsByClassName("removeItemField")[0].setAttribute("onclick", "onRemoveItemClicked(" + newItemIndex +")"); 
     itemFields.appendChild(newItemField);
     $("button.removeItemField").removeAttr("disabled");
+    enableOrDisableSubmitButton();
 }
 
 function onRemoveItemClicked(itemIndex) {
@@ -31,4 +46,8 @@ function onRemoveItemClicked(itemIndex) {
     if (itemFields.length == 1) {
         $("button.removeItemField").attr("disabled", "true");
     }
+}
+
+function onType() {
+    enableOrDisableSubmitButton();
 }

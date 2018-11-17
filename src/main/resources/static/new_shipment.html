@@ -4,17 +4,17 @@
 	<h1>New shipment</h1>
 	<form action="/shipment" method="post" name="shipment">
 		<div>
-			<span>Name:</span><input type="text" name="name" />
+			<span>Name:</span><input type="text" class="required" name="name" oninput="onType()"/>
 		</div>
 		<div id="itemFields">
 			<div>
 				<span class="itemFieldText">Item 1:</span>
-				<input class="itemFieldInput" type="text" name="items[0].name" />
+				<input class="itemFieldInput required" type="text" oninput="onType()" name="items[0].name" />
 				<button class="removeItemField" type="button" disabled="true" onclick="onRemoveItemClicked(0)">Remove</button>
 			</div>
 		</div>
 		<button type="button" onclick="onAddItemClicked()">Add item</button>
-		<input type="submit" />
+		<input id="submitButton" type="submit" disabled="true" />
 	</form>
 </body>
 </html>
