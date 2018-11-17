@@ -1,0 +1,16 @@
+<html>
+<body>
+	<h1>Welcome to this simple store</h1>
+	{{^shipments}}
+	<p>There are no shipments to show</p>
+	{{/shipments}}
+	{{^shipments.empty}}
+	<p>Here are your shipments:</p>
+	<ul>
+		{{#shipments}}
+		<li><a href="/shipment/{{id}}">{{name}}</a></li>
+		{{/shipments}}
+	</ul>
+	{{/shipments.empty}}
+</body>
+</html>
